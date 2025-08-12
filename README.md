@@ -51,7 +51,10 @@ There are a few ways to do this, but I've found FZEEFlasher is the easiest and m
 Note: You must use the USB Type-C **USB & OTG** port.
 
 2. To verify your device is connected fun the command:
-```lsusb```
+
+```bash
+lsusb
+```
 
 Note: This should be something like /dev/cu.usbmodemxxxx on MacOS.
 
@@ -75,7 +78,9 @@ Note: Should be something like /dev/cu.usbmodemxxxxxxxxxxxx. Different from the 
 
 11. Interact with Marauder and verify its working.
 
-```scanap```
+```bash
+scanap
+```
 
 This will show all available networks within range of the device. 
 
@@ -88,7 +93,7 @@ To remotely control the DJI Tello, we will use the DJI Tello SDK. [Tello SDK](ht
 
 2. In the terminal, clone the djitellopy repository.
 
-```
+```bash
 git clone https://github.com/damiafuentes/DJITelloPy.git
 cd DJITelloPy
 pip install -e .
@@ -96,13 +101,36 @@ pip install -e .
 
 3. Install the requirements.
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 4. Create a new .py file. _Tello_testing.py_
 
-cont.
+```python
+
+from djitellpy import tello
+import time
+
+drone = tello.Tello()
+drone.connect()
+
+print(f"Battery: {tello.get_battery()}%")
+
+drone.takeoff()
+time.sleep(2)
+
+drone.move_forward(50)
+time.sleep(2)
+
+drone.move_backward(50)
+time.sleep(2)
+
+drone.land()
+time.sleep(2)
+
+drone.disconnect()
+```
 
 ---
 
@@ -122,4 +150,4 @@ cont.
 - [FZEEFlasher](https://fzeeflasher.com/index.html)
 - [Espressif ESP32-S3 Documentation](https://docs.espressif.com/projects/esptool/en/latest/esp32s3/installation.html)
 - [Espressif Serical Connection](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html)
-- 
+  
