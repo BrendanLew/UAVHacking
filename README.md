@@ -51,7 +51,7 @@ There are a few ways to do this, but I've found FZEEFlasher is the easiest and m
 Note: You must use the USB Type-C **USB & OTG** port.
 
 2. To verify your device is connected fun the command:
-'''lsusb'''
+```lsusb```
 
 Note: This should be something like /dev/cu.usbmodemxxxx on MacOS.
 
@@ -75,7 +75,7 @@ Note: Should be something like /dev/cu.usbmodemxxxxxxxxxxxx. Different from the 
 
 11. Interact with Marauder and verify its working.
 
-'''scanap'''
+```scanap```
 
 This will show all available networks within range of the device. 
 
@@ -88,17 +88,17 @@ To remotely control the DJI Tello, we will use the DJI Tello SDK. [Tello SDK](ht
 
 2. In the terminal, clone the djitellopy repository.
 
-'''
+```
 git clone https://github.com/damiafuentes/DJITelloPy.git
 cd DJITelloPy
 pip install -e .
-'''
+```
 
 3. Install the requirements.
 
-'''
+```
 pip install -r requirements.txt
-'''
+```
 
 4. Create a new .py file. _Tello_testing.py_
 
