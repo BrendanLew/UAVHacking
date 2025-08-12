@@ -48,7 +48,7 @@ There are a few ways to do this, but I've found FZEEFlasher is the easiest and m
 
 1. Plug in your ESP32-S3 to your computer via USB.
 
-Note: You must use the USB Type-C **USB & OTG** port.
+ Note: You must use the USB Type-C **USB & OTG** port.
 
 2. To verify your device is connected fun the command:
 
@@ -56,7 +56,7 @@ Note: You must use the USB Type-C **USB & OTG** port.
 lsusb
 ```
 
-Note: This should be something like /dev/cu.usbmodemxxxx on MacOS.
+ Note: This should be something like /dev/cu.usbmodemxxxx on MacOS.
 
 3. Open FZEEFlasher: https://fzeeflasher.com/index.html
 
@@ -74,7 +74,7 @@ Note: This should be something like /dev/cu.usbmodemxxxx on MacOS.
    
 10. Using FZEEFlasher, connect to the serial port.
 
-Note: Should be something like /dev/cu.usbmodemxxxxxxxxxxxx. Different from the first time.
+ Note: Should be something like /dev/cu.usbmodemxxxxxxxxxxxx. Different from the first time.
 
 11. Interact with Marauder and verify its working.
 
@@ -130,6 +130,12 @@ drone.land()
 time.sleep(2)
 
 drone.disconnect()
+```
+
+5. Run the script.
+
+```bash
+python3 tello_testing.py
 ```
 
 ---
