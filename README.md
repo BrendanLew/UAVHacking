@@ -64,15 +64,17 @@ lsusb
 
 5. Select your hardware 'ESP32-S3 multimedia board'.
 
-6. Select **Marauder** in the drop down.
+6. Version: 1.8.3
 
-7. Flash.
+7. Select **Marauder** in the drop down.
 
-8. Once the flashing has completed. Unplug the ESP32-S3 for 5 seconds and plug into the USB Type-C **USB to Serial** port.
+8. Flash.
 
-9. Open the serial terminal
+9. Once the flashing has completed. Unplug the ESP32-S3 for 5 seconds and plug into the USB Type-C **USB to Serial** port.
+
+10. Open the serial terminal
    
-10. Using FZEEFlasher, connect to the serial port.
+11. Using FZEEFlasher, connect to the serial port.
 
  Note: Should be something like /dev/cu.usbmodemxxxxxxxxxxxx. Different from the first time.
 
