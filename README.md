@@ -2,17 +2,16 @@
 
 A NASA-funded project conducted through GVSU College of Computing. 
  
-Cybersecurity research on UAV communications. Conduct reconnaissance. Exploit vulnerabilities.  Take control.
+Cybersecurity research on UAV communications. Conduct reconnaissance. Exploit vulnerabilities. Take control.
 
 ---
 
-By Brendan Lewis - Grand Valley State University
-BS. Cybersecurity
+By Brendan Lewis - Grand Valley State University BS. Cybersecurity
 
 ---
 ## 1. Abstract
 
-This project will focus on researching and exploiting vulnerabilities in UAV communications. Preliminary research shows that UAV's are being used for personal and military applications. An increase in the ammount of UAV's increase the attack surface for drone communication. Hackers can passivly eavesdrop on Air to Ground (A2G) and Ground to Air (G2A) communications, and they can uncover important telemetry data that can be used to locate and attack the UAV. Furthermore, an active attack, such as GPS spoofing, can mislead the drones sensors and cause it to crash or fly in an unrestricted area.
+This project will focus on researching and exploiting vulnerabilities in UAV communications. Preliminary research shows that UAV's are being used for personal and military applications. An increase in the number of UAV's increase the attack surface for drone communication. Hackers can passively eavesdrop on Air to Ground (A2G) and Ground to Air (G2A) communications, and they can uncover important telemetry data that can be used to locate and attack the UAV. Furthermore, an active attack, such as GPS spoofing, can mislead the drones sensors and cause it to crash or fly in an unrestricted area.
 
 By conducting this research we hope to investigate _why_ drone communication has such a large attack surface, and exploit these vulnerabilities in real time using a DJI Tello drone and an ESP32-S3 running Marauder. 
 
@@ -44,7 +43,7 @@ By conducting this research we hope to investigate _why_ drone communication has
 
 ### Flashing Marauder on the ESP32-S3
 
-There are a few ways to do this, but I've found FZEEFlasher is the easiest and most convienient. This guide follows only MacOS for now. 
+There are a few ways to do this, but I've found FZEEFlasher is the easiest and most convenient. This guide follows only MacOS for now. 
 
 1. Plug in your ESP32-S3 to your computer via USB.
 
@@ -60,25 +59,23 @@ lsusb
 
 3. Open FZEEFlasher: https://fzeeflasher.com/index.html
 
-4. Click **Connect** and select your ESP32-S3 Device. 
+- Connect → select ESP32-S3
 
-5. Select your hardware 'ESP32-S3 multimedia board'.
+- Hardware: ESP32-S3 Multimedia Board
 
-6. Version: 1.8.3
+- Version: 1.8.3
 
-7. Select **Marauder** in the drop down.
+- Select: Marauder → Flash
 
-8. Flash.
+4. Once the flashing has completed. Unplug the ESP32-S3 for 5 seconds and plug into the USB Type-C **USB to Serial** port.
 
-9. Once the flashing has completed. Unplug the ESP32-S3 for 5 seconds and plug into the USB Type-C **USB to Serial** port.
-
-10. Open the serial terminal
+5. Open the serial terminal
    
-11. Using FZEEFlasher, connect to the serial port.
+6. Using FZEEFlasher, connect to the serial port.
 
- Note: Should be something like /dev/cu.usbmodemxxxxxxxxxxxx. Different from the first time.
+Note: Should be something like /dev/cu.usbmodemxxxxxxxxxxxx. Different from the first time.
 
-11. Interact with Marauder and verify its working.
+9. Interact with Marauder and verify its working.
 
 ```bash
 scanap
@@ -181,9 +178,19 @@ stopscan
 
 ## 6. Using the ESP32-S3 for a Passive Attack
 
+Ongoing...
+
+
 ---
 
 ## 7. Using the ESP32-S3 for an Active Attack
+---
+
+## Disclaimer
+
+This project is for educational and research purposes only.
+Do not use these techniques against devices you do not own or without explicit authorization.
+
 ---
 
 ## References
