@@ -11,10 +11,17 @@ By Brendan Lewis - Grand Valley State University BS. Cybersecurity
 ---
 ## 1. Abstract
 
-This project will focus on researching and exploiting vulnerabilities in UAV communications. Preliminary research shows that UAV's are being used for personal and military applications. An increase in the number of UAV's increase the attack surface for drone communication. Hackers can passively eavesdrop on Air to Ground (A2G) and Ground to Air (G2A) communications, and they can uncover important telemetry data that can be used to locate and attack the UAV. Furthermore, an active attack, such as GPS spoofing, can mislead the drones sensors and cause it to crash or fly in an unrestricted area.
+This project will focus on researching and exploiting vulnerabilities in UAV communications. Preliminary research shows that UAVs are being used for personal and military applications. An increase in the number of UAVs increases the attack surface for drone communication. Hackers can passively eavesdrop on Air to Ground (A2G) and Ground to Air (G2A) communications, and they can uncover important telemetry data that can be used to locate and attack the UAV. Furthermore, an active attack, such as GPS spoofing, can mislead the drone's sensors and cause it to crash or fly in an unrestricted area.
 
-By conducting this research we hope to investigate _why_ drone communication has such a large attack surface, and exploit these vulnerabilities in real time using a DJI Tello drone and an ESP32-S3 running Marauder. 
+By conducting this research, we hope to investigate _why_ drone communication has such a large attack surface, and exploit these vulnerabilities in real time using a DJI Tello drone and an ESP32-S3 running Marauder. 
 
+--
+### Reference:
+
+<img width="708" height="413" alt="image" src="https://github.com/user-attachments/assets/6c33783b-7073-4c6d-adf9-bf6469562618" />
+
+
+---
 
 ## 2. Requirements
 
@@ -22,6 +29,8 @@ By conducting this research we hope to investigate _why_ drone communication has
 
 - DJI Tello drone
 - ESP32-S3
+- ALFA AWUS036ACH USB Wi-Fi Adapter
+- Raspberry Pi Pico
 - MacOS, Windows, or Linux machine
 
 ### Software
@@ -30,6 +39,7 @@ By conducting this research we hope to investigate _why_ drone communication has
 - Marauder
 - Djitellopy
 - Wireshark
+- aircrack-ng
 
 ---
 ## 3. Getting Started
@@ -43,7 +53,7 @@ By conducting this research we hope to investigate _why_ drone communication has
 
 ### Flashing Marauder on the ESP32-S3
 
-There are a few ways to do this, but I've found FZEEFlasher is the easiest and most convenient. This guide follows only MacOS for now. 
+There are a few ways to do this, but I've found FZEEFlasher is the easiest and most convenient. This guide follows only macOS for now. 
 
 1. Plug in your ESP32-S3 to your computer via USB.
 
@@ -55,7 +65,7 @@ There are a few ways to do this, but I've found FZEEFlasher is the easiest and m
 lsusb
 ```
 
- Note: This should be something like /dev/cu.usbmodemxxxx on MacOS.
+ Note: This should be something like /dev/cu.usbmodemxxxx on macOS.
 
 3. Open FZEEFlasher: https://fzeeflasher.com/index.html
 
@@ -67,7 +77,7 @@ lsusb
 
 - Select: Marauder → Flash
 
-4. Once the flashing has completed. Unplug the ESP32-S3 for 5 seconds and plug into the USB Type-C **USB to Serial** port.
+4. Once the flashing has completed. Unplug the ESP32-S3 for 5 seconds and plug it into the USB Type-C **USB to Serial** port.
 
 5. Open the serial terminal
    
@@ -84,11 +94,11 @@ scanap
 This will show all available networks within range of the device. 
 
 ---
-## 4. Remotely Controling the DJI Tello 
+## 4. Remotely Controlling the DJI Tello 
 
 To remotely control the DJI Tello, we will use the DJI Tello SDK. [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf)
 
-1. Open your favorite IDE, in this example Virtual Studio Code.
+1. Open your favorite IDE, in this example, Visual Studio Code.
 
 2. In the terminal, clone the djitellopy repository.
 
@@ -162,7 +172,7 @@ select -a <index>
 list -a
 ```
 
-5. Deauthenticate the AP's in the list (only intended for educational purposes)
+5. Deauthenticate the APs in the list (only intended for educational purposes)
 
 ```
 attack -t deauth
@@ -176,14 +186,80 @@ stopscan
 
 ---
 
-## 6. Using the ESP32-S3 for a Passive Attack
+## 6. Setting up the Attacker VM
 
-Ongoing...
+### Kali Linux Setup
+
+1. Download and install VirtualBox
+
+https://www.virtualbox.org/
+
+2. Create a new VM with Kali Linux
+
+3. Enable USB 3.0 xHCi for USB Passthrough
+
+4. After you boot, it's a good idea to update
+
+```
+sudo apt update && upgrade -y
+```
+
+--
+
+### ALFA AWUS036ACH USB Wi-Fi Adapter
+
+1. Plug in the ALFA USB adapter and ensure it is connected
+
+```
+lsusb
+```
+- You should see a Realtek RTL88**AU adapter
+
+2. Update and get the official driver
+
+```
+cd /tmp
+git clone https://github.com/aircrack-ng/rtl8812au.git
+cd rtl8812au
+```
+
+3. dkms installation
+
+```
+make dkms_install
+```
+
+4. Load kernel module
+
+```
+modprobe 8812au
+```
+
+5. List the wireless devices to verify
+
+```
+iw dev
+```
+
+#### Set the USB Wi-Fi Adapter to Monitor Mode
+
+```
+sudo airmon-ng check kill
+sudo airmon-ng start wlan0   # replace wlan0 with the real device name if different
+iw dev                       # confirm monitor device (e.g. wlan0mon)
+             
+```
+---
+## 7. Configure the Raspberry Pi Pico
+
+
 
 
 ---
+## 8. Possible Attacks with this configuration
 
-## 7. Using the ESP32-S3 for an Active Attack
+
+
 ---
 
 ## Disclaimer
@@ -202,4 +278,6 @@ Do not use these techniques against devices you do not own or without explicit a
 - [FZEEFlasher](https://fzeeflasher.com/index.html)
 - [Espressif ESP32-S3 Documentation](https://docs.espressif.com/projects/esptool/en/latest/esp32s3/installation.html)
 - [Espressif Serical Connection](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html)
+- [aircrack-ng](https://www.aircrack-ng.org/doku.php?id=Main)
+- 
   
