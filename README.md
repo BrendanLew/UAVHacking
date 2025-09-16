@@ -1,6 +1,6 @@
 # UAVHacking
 
-A NASA-funded project conducted through GVSU College of Computing. 
+A NASA-funded project conducted through the GVSU College of Computing. 
  
 Cybersecurity research on UAV communications. Conduct reconnaissance. Exploit vulnerabilities. Take control.
 
@@ -48,7 +48,7 @@ By conducting this research, we hope to investigate _why_ drone communication ha
 
 1. Download the DJI Tello mobile application.
 2. Press the power button on the side of the drone.
-3. Connect to the Tello-xxxxx network from your devices Wi-Fi settings menu.
+3. Connect to the Tello-xxxxx network from your device's Wi-Fi settings menu.
 4. Open the Tello App.
 
 ### Flashing Marauder on the ESP32-S3
@@ -211,7 +211,7 @@ iw dev
 ```
 sudo airmon-ng check kill
 sudo airmon-ng start wlan0   # replace wlan0 with the real device name if different
-iw dev                       # confirm monitor device (e.g. wlan0mon)
+iw dev                       # confirm monitor device (e.g., wlan0mon)
              
 ```
 ---
@@ -239,7 +239,7 @@ airodump-ng <network-interface>
 ```
 airodump-ng --bssid <target-AP-BSSID> -c <channel> -w <file> wlan0mon
 ```
-- Writes output to <file>
+- Captures traffic and writes the output to a file
 
 3. (Optional) Analyze these packets with _analyze_tello_captures.py_
 
@@ -312,10 +312,9 @@ Do not use these techniques against devices you do not own or without explicit a
 - [ESP32 Marauder](https://github.com/justcallmekoko/ESP32Marauder)
 - [FZEEFlasher](https://fzeeflasher.com/index.html)
 - [Espressif ESP32-S3 Documentation](https://docs.espressif.com/projects/esptool/en/latest/esp32s3/installation.html)
-- [Espressif Serical Connection](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html)
+- [Espressif Serial Connection](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html)
 - [aircrack-ng](https://www.aircrack-ng.org/doku.php?id=Main)
 - [VirtualBox](https://www.virtualbox.org/)
 - [Wireshark](https://www.wireshark.org/)
-- 
-- 
+
   
