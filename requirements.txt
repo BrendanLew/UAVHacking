@@ -2,3 +2,5 @@ numpy>=1.20.1
 av>=8.0.3
 pillow>=8.4.0
 python>=3.13.6
+scapy>=2.6.1
+pandas>=2.3.2
