@@ -217,6 +217,8 @@ lsusb
 
 2. Update and get the official driver
 
+https://docs.alfa.com.tw/Product/AWUS036ACH/
+
 ```
 cd /tmp
 git clone https://github.com/aircrack-ng/rtl8812au.git
@@ -279,5 +281,8 @@ Do not use these techniques against devices you do not own or without explicit a
 - [Espressif ESP32-S3 Documentation](https://docs.espressif.com/projects/esptool/en/latest/esp32s3/installation.html)
 - [Espressif Serical Connection](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html)
 - [aircrack-ng](https://www.aircrack-ng.org/doku.php?id=Main)
+- [VirtualBox](https://www.virtualbox.org/)
+- [Wireshark](https://www.wireshark.org/)
+- 
 - 
   
